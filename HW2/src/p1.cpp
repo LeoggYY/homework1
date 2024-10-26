@@ -6,10 +6,11 @@ using namespace std;
 void gg(vector<int>& set, vector<int>& x, int index) {
     if (index == set.size()) {
         cout << "{ ";
-        for (int num : x) {
+       for (int i = 0; i < x.size(); ++i) {
+            int num = x[i];
             cout << num << " ";
-        }
-        cout << "}" << endl;
+    }
+            cout << "}" << endl;
         return;
     }
     //不包含當前元素
