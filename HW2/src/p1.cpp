@@ -1,24 +1,34 @@
-#include <algorithm>
-#include <cmath>
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-#include <fstream>
 #include <iostream>
-#include <random>
-#include <sstream>
-#include <string>
+#include <vector>
 
 using namespace std;
-long int  ak(int m, int n)
-{
-	if (m == 0) return n + 1;
-	else if (n == 0) return ak(m - 1, 1);
-	else return ak(m - 1, ak(m, n - 1));
+
+void gg(vector<int>& set, vector<int>& x, int index) {
+    if (index == set.size()) {
+        cout << "{ ";
+        for (int num : x) {
+            cout << num << " ";
+        }
+        cout << "}" << endl;
+        return;
+    }
+    //不包含當前元素
+    gg(set, x, index + 1);
+
+    //包含當前元素
+    x.push_back(set[index]);
+    gg(set,x, index + 1);
+
+    
+    x.pop_back();
 }
-int main()
-{
-	long int a, b;
-	cin >> a >> b;
-	cout  << ak(a, b);
+
+int main() {
+    vector<int> set = { 1, 2, 3, 4, 5 };
+    vector<int> x;
+
+    cout << "集合的冪集為:" << endl;
+    gg(set, x, 0);
+
+    return 0;
 }
